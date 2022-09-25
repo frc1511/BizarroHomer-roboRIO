@@ -78,6 +78,13 @@ void Drive::manualControlTank(double leftPct, double rightPct) {
     frc::DifferentialDriveWheelSpeeds wheelSpeeds { leftVel, rightVel };
 
     manualVelocities = kinematics.ToChassisSpeeds(wheelSpeeds);
+
+    if (leftPct || rightPct) {
+        driveMode = DriveMode::MANUAL;
+    }
+    else {
+        driveMode = DriveMode::STOPPED;
+    }
 }
 
 void Drive::manualControlArcade(double forwardBackPct, double turnPct) {
@@ -85,6 +92,13 @@ void Drive::manualControlArcade(double forwardBackPct, double turnPct) {
     units::degrees_per_second_t angVel(turnPct * DRIVE_MAX_MANUAL_ANG_VEL);
 
     manualVelocities = { xVel, 0_mps, angVel };
+
+    if (forwardBackPct || turnPct) {
+        driveMode = DriveMode::MANUAL;
+    }
+    else {
+        driveMode = DriveMode::STOPPED;
+    }
 }
 
 void Drive::resetOdometry(frc::Pose2d pose) { }
