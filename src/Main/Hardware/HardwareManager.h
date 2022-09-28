@@ -20,6 +20,8 @@ public:
 // Regular robot hardware.
 #else
     using DriveMotor = ThunderCANSparkMax;
+    using ShooterPivotMotor = ThunderCANSparkMax;
+    using ShooterRotationMotor = ThunderCANSparkMax;
 #endif
 
     using DriveGameController = ThunderPS4Controller;
