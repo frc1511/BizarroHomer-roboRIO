@@ -95,7 +95,7 @@ void Controls::doDrive() {
         }
 
         // Control the drivetrain.
-        drive->manualControlArcade(finalForwardBack, finalTurn);
+        drive->manualControlArcade(finalForwardBack, -finalTurn);
     }
 }
 

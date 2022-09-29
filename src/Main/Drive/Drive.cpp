@@ -10,13 +10,14 @@
 #define DRIVE_I_ZONE 0
 #define DRIVE_FF 0.000187
 
-#define DRIVE_FOOT_TO_ENDODER_FACTOR 6.51
+// Distance: 12.27 feet, Encoder: 38.93 rotations.
+#define DRIVE_FOOT_TO_ENDODER_FACTOR 3.1724
 
 #define DRIVE_METER_TO_ENCODER_FACTOR (DRIVE_FOOT_TO_ENDODER_FACTOR * 3.28084)
 
 #define DRIVE_ENCODER_TO_METER_FACTOR (1 / (DRIVE_METER_TO_ENCODER_FACTOR))
 
-#define DRIVE_MAX_MANUAL_VEL 1_mps
+#define DRIVE_MAX_MANUAL_VEL 2_mps
 #define DRIVE_MAX_MANUAL_ANG_VEL 180_deg_per_s
 
 Drive::Drive() {
@@ -69,6 +70,13 @@ void Drive::doPersistentConfiguration() {
 void Drive::resetToMode(MatchMode mode) {
     manualVelocities = { 0_mps, 0_mps, 0_deg_per_s };
     driveMode = DriveMode::STOPPED;
+
+    if (mode != MatchMode::DISABLED) {
+        // Reset encoder positions.
+        for (HardwareManager::DriveMotor* motor : driveMotors) {
+            motor->setEncoderPosition(0);
+        }
+    }
 }
 
 void Drive::manualControlTank(double leftPct, double rightPct) {
@@ -126,7 +134,7 @@ void Drive::setChassisVelocities(frc::ChassisSpeeds velocities) {
         return mps.value() * 60 * DRIVE_METER_TO_ENCODER_FACTOR;
     };
 
-    double leftRPM(toRPM(leftMPS)),
+    double leftRPM(-toRPM(leftMPS)),
            rightRPM(toRPM(rightMPS));
 
     leftDrive0.set(ThunderCANMotorController::ControlMode::VELOCITY, leftRPM);

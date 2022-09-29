@@ -13,7 +13,8 @@
 #include <units/length.h>
 #include <array>
 
-#define DRIVE_WIDTH 0.7_m
+#define DRIVE_WIDTH 28_in
+#define DRIVE_LENGTH 33.75_in
 
 class Drive : public Mechanism {
 public:
