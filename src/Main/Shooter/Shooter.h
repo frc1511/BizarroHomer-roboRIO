@@ -17,7 +17,8 @@ private:
 
     enum class ShooterMode {
         IDLE, 
-        AIMING,
+        PIVOTING,
+        ROTATING,
         WANT_TO_SHOOT,
         SHOOTING
     };

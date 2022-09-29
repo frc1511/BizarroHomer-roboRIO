@@ -4,7 +4,7 @@
 
 
 void Shooter::pivotShooter(void){
-    
+    ShooterMode shooterMode = ShooterMode::PIVOTING;
 }
 
 void Shooter::rotateBarrel(void){
