@@ -19,7 +19,9 @@ private:
 
     enum class ShooterMode {
         IDLE, 
+        WANT_TO_PIVOT,
         PIVOTING,
+        WANT_TO_ROTATE,
         ROTATING,
         WANT_TO_SHOOT,
         SHOOTING
