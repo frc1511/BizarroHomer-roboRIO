@@ -15,7 +15,7 @@ private:
     int shooterPivotAngle;
     int shooterBarrelPosition;
 
-    enum class ShooterMode{
+    enum class ShooterMode {
         IDLE, 
         AIMING,
         WANT_TO_SHOOT,
