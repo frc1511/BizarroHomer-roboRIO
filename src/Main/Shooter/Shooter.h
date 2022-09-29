@@ -14,6 +14,14 @@ public:
 private:
     int shooterPivotAngle;
     int shooterBarrelPosition;
+
+    enum class ShooterMode{
+        IDLE, 
+        AIMING,
+        WANT_TO_SHOOT,
+        SHOOTING
+    };
+
     HardwareManager::ShooterRotationMotor rotateBarrel0 { CAN_SHOOTER_ROTATE_MOTOR };
     HardwareManager::ShooterPivotMotor pivotBarrel0 { CAN_SHOOTER_PIVOT_MOTOR0 };
     HardwareManager::ShooterPivotMotor pivotBarrel1 { CAN_SHOOTER_PIVOT_MOTOR1 };
