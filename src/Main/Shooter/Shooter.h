@@ -8,8 +8,10 @@ class Shooter: public Mechanism {
 public:
     int desiredShooterPivotPosition;
     int desiredShooterBarrelPosition;
+    void process() override;
     void pivotShooter();
     void rotateBarrel();
+    void Shoot();
 
 private:
     int shooterPivotAngle;
@@ -22,6 +24,8 @@ private:
         WANT_TO_SHOOT,
         SHOOTING
     };
+
+    ShooterMode shooterMode = ShooterMode::IDLE;
 
     HardwareManager::ShooterRotationMotor rotateBarrel0 { CAN_SHOOTER_ROTATE_MOTOR };
     HardwareManager::ShooterPivotMotor pivotBarrel0 { CAN_SHOOTER_PIVOT_MOTOR0 };

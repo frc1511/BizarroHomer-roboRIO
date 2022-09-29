@@ -8,5 +8,11 @@ void Shooter::pivotShooter(void){
 }
 
 void Shooter::rotateBarrel(void){
+    ShooterMode shooterMode = ShooterMode::ROTATING;
+}
 
+void Shooter::process(){
+    switch (shooterMode) {
+        
+    }
 }
