@@ -9,6 +9,8 @@ void Shooter::pivotShooter(void){
 
 void Shooter::rotateBarrel(void){
     ShooterMode shooterMode = ShooterMode::ROTATING;
+    shooterBarrelPosition =rotateBarrel0.getEncoderPosition();
+    rotateBarrel0.set(ThunderCANMotorController::ControlMode::POSITION, 5);
 }
 
 void Shooter::Shoot(void){
