@@ -30,6 +30,7 @@ void Shooter::homeShooter(void){
         pivotBarrel1.setEncoderPosition(0);
         pivotBarrel0.set(ThunderCANMotorController::ControlMode::PERCENT_OUTPUT, 0);
         pivotBarrel1.set(ThunderCANMotorController::ControlMode::PERCENT_OUTPUT, 0);
+        //sets shooter mode to idle once the zero has completed
         shooterMode = ShooterMode::IDLE;
     }
     
