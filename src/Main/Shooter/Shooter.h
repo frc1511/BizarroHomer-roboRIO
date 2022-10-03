@@ -12,12 +12,14 @@ public:
     void pivotShooter();
     void rotateBarrel();
     void Shoot();
+    void homeShooter();
 
 private:
     int shooterPivotAngle;
     int shooterBarrelPosition;
 
     enum class ShooterMode {
+        LOCALIZATION,
         IDLE, 
         WANT_TO_PIVOT,
         PIVOTING,
@@ -27,7 +29,7 @@ private:
         SHOOTING
     };
 
-    ShooterMode shooterMode = ShooterMode::IDLE;
+    ShooterMode shooterMode = ShooterMode::LOCALIZATION;
 
     HardwareManager::ShooterRotationMotor rotateBarrel0 { CAN_SHOOTER_ROTATE_MOTOR };
     HardwareManager::ShooterPivotMotor pivotBarrel0 { CAN_SHOOTER_PIVOT_MOTOR0 };

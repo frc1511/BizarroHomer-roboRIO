@@ -9,16 +9,23 @@ void Shooter::pivotShooter(void){
 
 void Shooter::rotateBarrel(void){
     ShooterMode shooterMode = ShooterMode::ROTATING;
-    shooterBarrelPosition =rotateBarrel0.getEncoderPosition();
-    rotateBarrel0.set(ThunderCANMotorController::ControlMode::POSITION, 5);
+    
+    //rotateBarrel0.set(ThunderCANMotorController::ControlMode::POSITION, 5);
 }
 
 void Shooter::Shoot(void){
 
 }
 
+void Shooter::homeShooter(void){
+    pivotBarrel0.set(ThunderCANMotorController::ControlMode::PERCENT_OUTPUT, -.25);
+    pivotBarrel1.set(ThunderCANMotorController::ControlMode::PERCENT_OUTPUT, -.25);
+}
+
 void Shooter::process(){
     switch (shooterMode) {
+        case ShooterMode::LOCALIZATION:
+            homeShooter();
         case ShooterMode::IDLE:
             return;
         case ShooterMode::WANT_TO_PIVOT:
