@@ -25,7 +25,7 @@ void Shooter::homeShooter(void){
     pivotBarrel0.set(ThunderCANMotorController::ControlMode::PERCENT_OUTPUT, -.05);
     pivotBarrel1.set(ThunderCANMotorController::ControlMode::PERCENT_OUTPUT, -.05);
     //looks for current spike, if the current spikes, set encoders to 0 and then stop the motors
-    if (pivotBarrel0.getOutputCurrent() > 30_A){
+    if ((pivotBarrel0.getOutputCurrent() > 30_A) && (pivotBarrel1.getOutputCurrent() > 30_A)){
         pivotBarrel0.setEncoderPosition(0);
         pivotBarrel1.setEncoderPosition(0);
         pivotBarrel0.set(ThunderCANMotorController::ControlMode::PERCENT_OUTPUT, 0);
