@@ -17,9 +17,22 @@ void Shooter::Shoot(void){
 
 }
 
+//zeroes the shooter on bootup
 void Shooter::homeShooter(void){
-    pivotBarrel0.set(ThunderCANMotorController::ControlMode::PERCENT_OUTPUT, -.25);
-    pivotBarrel1.set(ThunderCANMotorController::ControlMode::PERCENT_OUTPUT, -.25);
+    //invert one motor because of they way they're opposite 
+    pivotBarrel0.setInverted(true);
+    //sets percent output to bring them down slowly 
+    pivotBarrel0.set(ThunderCANMotorController::ControlMode::PERCENT_OUTPUT, -.05);
+    pivotBarrel1.set(ThunderCANMotorController::ControlMode::PERCENT_OUTPUT, -.05);
+    //looks for current spike, if the current spikes, set encoders to 0 and then stop the motors
+    if (pivotBarrel0.getOutputCurrent() > 30_A){
+        pivotBarrel0.setEncoderPosition(0);
+        pivotBarrel1.setEncoderPosition(0);
+        pivotBarrel0.set(ThunderCANMotorController::ControlMode::PERCENT_OUTPUT, 0);
+        pivotBarrel1.set(ThunderCANMotorController::ControlMode::PERCENT_OUTPUT, 0);
+        shooterMode = ShooterMode::IDLE;
+    }
+    
 }
 
 void Shooter::process(){
