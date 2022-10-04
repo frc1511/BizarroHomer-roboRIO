@@ -18,8 +18,8 @@ public:
 private:
     units::degree_t maxAngle = 65_deg;
     units::degree_t minAngle = 0_deg;
-    int maxPosition;
-    int minPositon;
+    double maxPosition = 4.01;
+    double minPositon = 0;
     int shooterPivotPosition;
     int shooterBarrelPosition;
 
