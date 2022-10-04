@@ -7,7 +7,7 @@
 
 class Shooter: public Mechanism {
 public:
-    int desiredShooterPivotPosition;
+    int desiredShooterPivotAngle;
     int desiredShooterBarrelPosition;
     void process() override;
     void pivotShooter(units::degree_t angle);
@@ -19,8 +19,9 @@ private:
     units::degree_t maxAngle = 65_deg;
     units::degree_t minAngle = 0_deg;
     double maxPosition = 4.01;
-    double minPositon = 0.0;
-    int shooterPivotPosition;
+    double minPosition = 0.0;
+    int shooterPivotAngle;
+    int targetPivotAngle;
     int shooterBarrelPosition;
 
     enum class ShooterMode {

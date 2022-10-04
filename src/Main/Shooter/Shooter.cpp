@@ -3,9 +3,10 @@
 #include <Wrappers/MotorController/CANMotorController.h>
 
 
-void Shooter::pivotShooter(units::degree_t desiredShooterPivotPosition){
+void Shooter::pivotShooter(units::degree_t desiredShooterPivotAngle){
     ShooterMode shooterMode = ShooterMode::PIVOTING;
-    
+    targetPivotAngle = (((desiredShooterPivotAngle-minAngle)/(maxAngle-minAngle))*(maxPosition-minPosition))+minPosition;
+
 }
 
 void Shooter::rotateBarrel(void){
