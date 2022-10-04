@@ -3,8 +3,9 @@
 #include <Wrappers/MotorController/CANMotorController.h>
 
 
-void Shooter::pivotShooter(void){
+void Shooter::pivotShooter(units::degree_t desiredShooterPivotPosition){
     ShooterMode shooterMode = ShooterMode::PIVOTING;
+    
 }
 
 void Shooter::rotateBarrel(void){
@@ -43,7 +44,7 @@ void Shooter::process(){
         case ShooterMode::IDLE:
             return;
         case ShooterMode::WANT_TO_PIVOT:
-            pivotShooter();
+            pivotShooter(10_deg);
             break;
         case ShooterMode::WANT_TO_ROTATE:
             rotateBarrel();

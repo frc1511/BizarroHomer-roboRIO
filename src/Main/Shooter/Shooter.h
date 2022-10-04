@@ -3,19 +3,24 @@
 #include <Basic/Mechanism.h>
 #include <Hardware/HardwareManager.h>
 #include <Basic/Feedback.h>
+#include <units/angle.h>
 
 class Shooter: public Mechanism {
 public:
     int desiredShooterPivotPosition;
     int desiredShooterBarrelPosition;
     void process() override;
-    void pivotShooter();
+    void pivotShooter(units::degree_t angle);
     void rotateBarrel();
     void Shoot();
     void homeShooter();
 
 private:
-    int shooterPivotAngle;
+    units::degree_t maxAngle = 65_deg;
+    units::degree_t minAngle = 0_deg;
+    int maxPosition;
+    int minPositon;
+    int shooterPivotPosition;
     int shooterBarrelPosition;
 
     enum class ShooterMode {
