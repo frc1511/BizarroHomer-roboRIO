@@ -6,7 +6,8 @@
 void Shooter::pivotShooter(units::degree_t desiredShooterPivotAngle){
     ShooterMode shooterMode = ShooterMode::PIVOTING;
     targetPivotAngle = (((desiredShooterPivotAngle-minAngle)/(maxAngle-minAngle))*(maxPosition-minPosition))+minPosition;
-
+    pivotBarrel0.set(ThunderCANMotorController::ControlMode::POSITION, targetPivotAngle);
+    pivotBarrel1.set(ThunderCANMotorController::ControlMode::POSITION, targetPivotAngle);
 }
 
 void Shooter::rotateBarrel(void){
@@ -45,6 +46,7 @@ void Shooter::process(){
         case ShooterMode::IDLE:
             return;
         case ShooterMode::WANT_TO_PIVOT:
+            //placeholder value for now
             pivotShooter(10_deg);
             break;
         case ShooterMode::WANT_TO_ROTATE:

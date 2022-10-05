@@ -30,3 +30,6 @@
 
 
 // PWM
+
+//DIO
+#define DIO_SHOOTER_BANNER_ZEROING 0

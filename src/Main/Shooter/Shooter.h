@@ -4,6 +4,7 @@
 #include <Hardware/HardwareManager.h>
 #include <Basic/Feedback.h>
 #include <units/angle.h>
+#include "Hardware/IOMap.h"
 
 class Shooter: public Mechanism {
 public:
