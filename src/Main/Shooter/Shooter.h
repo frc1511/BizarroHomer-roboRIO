@@ -5,11 +5,13 @@
 #include <Basic/Feedback.h>
 #include <units/angle.h>
 #include "Hardware/IOMap.h"
+#include <frc/DigitalInput.h>
 
 class Shooter: public Mechanism {
 public:
     int desiredShooterPivotAngle;
     int desiredShooterBarrelPosition;
+    bool shooterIsAligned;
     void process() override;
     void pivotShooter(units::degree_t angle);
     void rotateBarrel();
