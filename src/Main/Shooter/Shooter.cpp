@@ -20,7 +20,6 @@ void Shooter::rotateBarrel(void){
         ShooterMode shooterMode = ShooterMode::ROTATING;
         rotateBarrel0.set(ThunderCANMotorController::ControlMode::PERCENT_OUTPUT, .05);
     }
-    
 }
 
 void Shooter::Shoot(void){
