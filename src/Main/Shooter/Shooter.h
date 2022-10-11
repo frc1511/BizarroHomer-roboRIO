@@ -26,7 +26,6 @@ private:
     int shooterPivotAngle;
     int targetPivotAngle;
     int shooterBarrelPosition;
-    bool checkSensor(frc::DigitalInput* sensor);
 
     enum class ShooterMode {
         LOCALIZATION,

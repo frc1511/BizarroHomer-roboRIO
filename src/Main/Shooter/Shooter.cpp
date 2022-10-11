@@ -12,8 +12,14 @@ void Shooter::pivotShooter(units::degree_t desiredShooterPivotAngle){
 }
 
 void Shooter::rotateBarrel(void){
-    ShooterMode shooterMode = ShooterMode::ROTATING;
-    
+    shooterIsAligned = shooterBanner.Get();
+    if (shooterIsAligned == true) {
+        ShooterMode shooterMode = ShooterMode::WANT_TO_SHOOT;
+    }
+    if (shooterIsAligned == false) {
+        ShooterMode shooterMode = ShooterMode::ROTATING;
+        rotateBarrel0.set(ThunderCANMotorController::ControlMode::PERCENT_OUTPUT, .05);
+    }
     //rotateBarrel0.set(ThunderCANMotorController::ControlMode::POSITION, 5);
 }
 
