@@ -23,7 +23,7 @@ void Shooter::rotateBarrel(void){
 }
 
 void Shooter::Shoot(void){
-
+    ShooterMode shooterMode = ShooterMode::SHOOTING;
 }
 
 //zeroes the shooter on bootup
