@@ -26,6 +26,7 @@ private:
     int shooterPivotAngle;
     int targetPivotAngle;
     int shooterBarrelPosition;
+    bool checkSensor(frc::DigitalInput* sensor);
 
     enum class ShooterMode {
         LOCALIZATION,
@@ -43,5 +44,6 @@ private:
     HardwareManager::ShooterRotationMotor rotateBarrel0 { CAN_SHOOTER_ROTATE_MOTOR };
     HardwareManager::ShooterPivotMotor pivotBarrel0 { CAN_SHOOTER_PIVOT_MOTOR0 };
     HardwareManager::ShooterPivotMotor pivotBarrel1 { CAN_SHOOTER_PIVOT_MOTOR1 };
+    frc::DigitalInput shooterBanner { DIO_SHOOTER_BANNER_ZEROING };
 
 };
