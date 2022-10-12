@@ -24,6 +24,11 @@ void Shooter::rotateBarrel(void){
 
 void Shooter::Shoot(void){
     ShooterMode shooterMode = ShooterMode::SHOOTING;
+    //close volume tank if open
+    fillVolume.Set(false);
+    //setup a pulse duration for the shot
+    shooterValve.SetPulseDuration(.5_s);
+    shooterValve.StartPulse();
 }
 
 //zeroes the shooter on bootup
