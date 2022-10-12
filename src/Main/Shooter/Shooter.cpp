@@ -59,7 +59,7 @@ void Shooter::process(){
             rotateBarrel();
             break;
         case ShooterMode::WANT_TO_SHOOT:
-            Shoot();
+            Preshoot();
             break;
     }
 }

@@ -6,6 +6,7 @@
 #include <units/angle.h>
 #include "Hardware/IOMap.h"
 #include <frc/DigitalInput.h>
+#include <frc/Solenoid.h>
 
 class Shooter: public Mechanism {
 public:
@@ -15,6 +16,7 @@ public:
     void process() override;
     void pivotShooter(units::degree_t angle);
     void rotateBarrel();
+    void Preshoot();
     void Shoot();
     void homeShooter();
 
@@ -44,5 +46,7 @@ private:
     HardwareManager::ShooterPivotMotor pivotBarrel0 { CAN_SHOOTER_PIVOT_MOTOR0 };
     HardwareManager::ShooterPivotMotor pivotBarrel1 { CAN_SHOOTER_PIVOT_MOTOR1 };
     frc::DigitalInput shooterBanner { DIO_SHOOTER_BANNER_ZEROING };
+    frc::Solenoid fillVolume {frc::PneumaticsModuleType::CTREPCM, FILL_VOLUME_TANK};
+    frc::Solenoid shooterValve {frc::PneumaticsModuleType::CTREPCM, OPEN_SHOOTER};
 
 };
