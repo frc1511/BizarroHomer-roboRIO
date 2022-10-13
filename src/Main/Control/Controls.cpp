@@ -66,12 +66,12 @@ void Controls::doDrive() {
     }
 
     //manual angle adjustment
-    if ((driveController.getDPad() == 270)){
-    
+    if ((driveController.getDPad() == 0)){
+        shooter->pivotShooter(shooter->getShooterAngle()+.5_deg);
     } 
 
-    if ((driveController.getDPad() == 90)){
-        
+    if ((driveController.getDPad() == 180)){
+        shooter->pivotShooter(shooter->getShooterAngle()-.5_deg);
     }
 
     // bool calGryo = driveController.getButtonPressed(DriveButton::SHARE);

@@ -2,32 +2,34 @@
 #include <Rev/CANSparkMax.h>
 #include <Wrappers/MotorController/CANMotorController.h>
 
+void Shooter::Preshoot(){
 
+}
 
 void Shooter::pivotShooter(units::degree_t desiredShooterPivotAngle){
-    ShooterMode shooterMode = ShooterMode::PIVOTING;
+    shooterMode = ShooterMode::PIVOTING;
     targetPivotAngle = (((desiredShooterPivotAngle-minAngle)/(maxAngle-minAngle))*(maxPosition-minPosition))+minPosition;
     pivotBarrel0.set(ThunderCANMotorController::ControlMode::POSITION, targetPivotAngle);
     pivotBarrel1.set(ThunderCANMotorController::ControlMode::POSITION, targetPivotAngle);
 }
 
-void Shooter::getShooterAngle(){
-    //returns current shooter angle for both motors
+units::degree_t Shooter::getShooterAngle(){
+    return ((pivotBarrel0.getEncoderPosition())/(maxPosition-minPosition))*(maxAngle-minAngle)+minAngle;
 }
 
 void Shooter::rotateBarrel(void){
     shooterIsAligned = shooterBanner.Get();
     if (shooterIsAligned == true) {
-        ShooterMode shooterMode = ShooterMode::WANT_TO_SHOOT;
+        shooterMode = ShooterMode::WANT_TO_SHOOT;
     }
     if (shooterIsAligned == false) {
-        ShooterMode shooterMode = ShooterMode::ROTATING;
+        shooterMode = ShooterMode::ROTATING;
         rotateBarrel0.set(ThunderCANMotorController::ControlMode::PERCENT_OUTPUT, .05);
     }
 }
 
 void Shooter::Shoot(void){
-    ShooterMode shooterMode = ShooterMode::SHOOTING;
+    shooterMode = ShooterMode::SHOOTING;
     //close volume tank if open
     fillVolume.Set(false);
     //setup a pulse duration for the shot
@@ -58,6 +60,7 @@ void Shooter::process(){
     switch (shooterMode) {
         case ShooterMode::LOCALIZATION:
             homeShooter();
+            break;  
         case ShooterMode::IDLE:
             return;
         case ShooterMode::WANT_TO_PIVOT:
@@ -69,6 +72,12 @@ void Shooter::process(){
             break;
         case ShooterMode::WANT_TO_SHOOT:
             Preshoot();
+            break;
+        case ShooterMode::ROTATING:
+            break;
+        case ShooterMode::SHOOTING:
+            break;
+        case ShooterMode::PIVOTING:
             break;
     }
 }
