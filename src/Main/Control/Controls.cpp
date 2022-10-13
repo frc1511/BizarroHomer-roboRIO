@@ -52,14 +52,30 @@ void Controls::doDrive() {
     bool resetOdometry = driveController.getButtonPressed(DriveButton::OPTIONS);
 
     //fun shooter preset thing
+    //30 degrees
+    if (driveController.getButton(DriveButton::CROSS)){
+        shooter->desiredShooterPivotAngle = 30_deg;
+        shooter->pivotShooter(shooter->desiredShooterPivotAngle);
+    }
     //45 degrees
     if (driveController.getButton(DriveButton::TRIANGLE)){
-        shooter->pivotShooter(45_deg);
+        shooter->desiredShooterPivotAngle = 45_deg;
+        shooter->pivotShooter(shooter->desiredShooterPivotAngle);
     }
-    //30 degrees
+    //60 degrees
+    if (driveController.getButton(DriveButton::CIRCLE)){
+        shooter->desiredShooterPivotAngle = 60_deg;
+        shooter->pivotShooter(shooter->desiredShooterPivotAngle);
+    }
 
     //manual angle adjustment
+    if ((driveController.getDPad() == 270)){
+    
+    } 
 
+    if ((driveController.getDPad() == 90)){
+        
+    }
 
     // bool calGryo = driveController.getButtonPressed(DriveButton::SHARE);
 

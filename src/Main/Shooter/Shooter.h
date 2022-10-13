@@ -10,7 +10,7 @@
 
 class Shooter: public Mechanism {
 public:
-    int desiredShooterPivotAngle;
+    units::degree_t desiredShooterPivotAngle;
     int desiredShooterBarrelPosition;
     bool shooterIsAligned;
     void process() override;

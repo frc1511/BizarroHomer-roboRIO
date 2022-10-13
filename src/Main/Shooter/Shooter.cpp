@@ -58,7 +58,7 @@ void Shooter::process(){
             return;
         case ShooterMode::WANT_TO_PIVOT:
             //placeholder value for now
-            pivotShooter(10_deg);
+            pivotShooter(desiredShooterPivotAngle);
             break;
         case ShooterMode::WANT_TO_ROTATE:
             rotateBarrel();
