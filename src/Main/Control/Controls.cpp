@@ -50,6 +50,17 @@ void Controls::doDrive() {
     double tankRight = -driveController.getAxis(DriveAxis::RIGHT_Y);
 
     bool resetOdometry = driveController.getButtonPressed(DriveButton::OPTIONS);
+
+    //fun shooter preset thing
+    //45 degrees
+    if (driveController.getButton(DriveButton::TRIANGLE)){
+        shooter->pivotShooter(45_deg);
+    }
+    //30 degrees
+
+    //manual angle adjustment
+
+
     // bool calGryo = driveController.getButtonPressed(DriveButton::SHARE);
 
     if (toggleCamera) {
