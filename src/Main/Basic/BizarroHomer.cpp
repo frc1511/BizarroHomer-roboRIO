@@ -25,6 +25,7 @@ void BizarroHomer::TeleopInit() {
 
 void BizarroHomer::TeleopPeriodic() {
     drive.process();
+    shooter.process();
     controls.process();
 }
 
