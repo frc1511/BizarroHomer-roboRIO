@@ -33,7 +33,7 @@ private:
     Drive drive;
     Shooter shooter;
 
-    Controls controls { &drive };
+    Controls controls { &drive, &shooter };
 
     std::vector<Mechanism*> allMechanisms {
         &drive, &controls, &shooter

@@ -3,12 +3,12 @@
 #include <Basic/Mechanism.h>
 #include <Hardware/HardwareManager.h>
 #include <Drive/Drive.h>
+#include <Shooter/Shooter.h>
 #include <Hardware/IOMap.h>
 
 class Controls : public Mechanism {
 public:
-    Controls(Drive* drive);
-    Controls(Shooter* shooter);
+    Controls(Drive* drive, Shooter* shooter);
     ~Controls();
     
     void process() override;
