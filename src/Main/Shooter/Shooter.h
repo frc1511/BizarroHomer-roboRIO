@@ -15,6 +15,7 @@ public:
     bool shooterIsAligned;
     void process() override;
     void pivotShooter(units::degree_t angle);
+    void getShooterAngle();
     void rotateBarrel();
     void Preshoot();
     void Shoot();

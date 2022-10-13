@@ -54,18 +54,15 @@ void Controls::doDrive() {
     //fun shooter preset thing
     //30 degrees
     if (driveController.getButton(DriveButton::CROSS)){
-        shooter->desiredShooterPivotAngle = 30_deg;
-        shooter->pivotShooter(shooter->desiredShooterPivotAngle);
+        shooter->pivotShooter(30_deg);
     }
     //45 degrees
     if (driveController.getButton(DriveButton::TRIANGLE)){
-        shooter->desiredShooterPivotAngle = 45_deg;
-        shooter->pivotShooter(shooter->desiredShooterPivotAngle);
+        shooter->pivotShooter(45_deg);
     }
     //60 degrees
     if (driveController.getButton(DriveButton::CIRCLE)){
-        shooter->desiredShooterPivotAngle = 60_deg;
-        shooter->pivotShooter(shooter->desiredShooterPivotAngle);
+        shooter->pivotShooter(60_deg);
     }
 
     //manual angle adjustment

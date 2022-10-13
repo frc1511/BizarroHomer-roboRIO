@@ -11,6 +11,10 @@ void Shooter::pivotShooter(units::degree_t desiredShooterPivotAngle){
     pivotBarrel1.set(ThunderCANMotorController::ControlMode::POSITION, targetPivotAngle);
 }
 
+void Shooter::getShooterAngle(){
+    //returns current shooter angle for both motors
+}
+
 void Shooter::rotateBarrel(void){
     shooterIsAligned = shooterBanner.Get();
     if (shooterIsAligned == true) {
