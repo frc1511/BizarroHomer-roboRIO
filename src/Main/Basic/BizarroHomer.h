@@ -5,6 +5,7 @@
 #include <Basic/Mechanism.h>
 #include <Control/Controls.h>
 #include <Drive/Drive.h>
+#include <Shooter/Shooter.h>
 #include <Hardware/IOMap.h>
 #include <vector>
 #include <iostream>
@@ -30,10 +31,11 @@ private:
     void reset(Mechanism::MatchMode mode);
 
     Drive drive;
+    Shooter shooter;
 
     Controls controls { &drive };
 
     std::vector<Mechanism*> allMechanisms {
-        &drive, &controls,
+        &drive, &controls, &shooter
     };
 };

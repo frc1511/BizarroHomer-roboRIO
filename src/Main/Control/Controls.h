@@ -8,6 +8,7 @@
 class Controls : public Mechanism {
 public:
     Controls(Drive* drive);
+    Controls(Shooter* shooter);
     ~Controls();
     
     void process() override;
@@ -30,4 +31,5 @@ private:
     bool driveTank = false;
 
     Drive* drive;
+    Shooter* shooter;
 };
