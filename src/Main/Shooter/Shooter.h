@@ -7,6 +7,7 @@
 #include "Hardware/IOMap.h"
 #include <frc/DigitalInput.h>
 #include <frc/Solenoid.h>
+#include <iostream>
 
 class Shooter: public Mechanism {
 public:

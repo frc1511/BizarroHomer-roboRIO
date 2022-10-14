@@ -74,6 +74,14 @@ void Controls::doDrive() {
         shooter->pivotShooter(shooter->getShooterAngle()-.5_deg);
     }
 
+    //SHOOTING
+    if (driveController.getAxis(DriveAxis::LEFT_TRIGGER)){
+        shooter->Shoot();
+    }
+    if (driveController.getButton(DriveButton::LEFT_BUMPER)){
+        shooter->Preshoot();
+    }
+
     // bool calGryo = driveController.getButtonPressed(DriveButton::SHARE);
 
     if (toggleCamera) {

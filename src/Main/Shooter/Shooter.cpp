@@ -3,7 +3,11 @@
 #include <Wrappers/MotorController/CANMotorController.h>
 
 void Shooter::Preshoot(){
-
+    //some sort of pressure check logic 
+    //close volume tank if open
+    fillVolume.Set(false);
+    std::cout << "Volume Tank Closed" << std::endl;
+    rotateBarrel();
 }
 
 void Shooter::pivotShooter(units::degree_t desiredShooterPivotAngle){
@@ -19,9 +23,11 @@ units::degree_t Shooter::getShooterAngle(){
 
 void Shooter::rotateBarrel(void){
     shooterIsAligned = shooterBanner.Get();
+    //if banner sensors see each other, mode becomes want to shoot
     if (shooterIsAligned == true) {
         shooterMode = ShooterMode::WANT_TO_SHOOT;
     }
+    //if they can't see each other, rotate until they do
     if (shooterIsAligned == false) {
         shooterMode = ShooterMode::ROTATING;
         rotateBarrel0.set(ThunderCANMotorController::ControlMode::PERCENT_OUTPUT, .05);
@@ -30,8 +36,6 @@ void Shooter::rotateBarrel(void){
 
 void Shooter::Shoot(void){
     shooterMode = ShooterMode::SHOOTING;
-    //close volume tank if open
-    fillVolume.Set(false);
     //setup a pulse duration for the shot
     shooterValve.SetPulseDuration(.5_s);
     shooterValve.StartPulse();
