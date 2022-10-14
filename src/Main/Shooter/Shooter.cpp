@@ -22,15 +22,13 @@ units::degree_t Shooter::getShooterAngle(){
 }
 
 void Shooter::rotateBarrel(void){
+    shooterMode = ShooterMode::ROTATING;
     shooterIsAligned = shooterBanner.Get();
+    rotateBarrel0.set(ThunderCANMotorController::ControlMode::PERCENT_OUTPUT, .05);
     //if banner sensors see each other, mode becomes want to shoot
     if (shooterIsAligned == true) {
         shooterMode = ShooterMode::WANT_TO_SHOOT;
-    }
-    //if they can't see each other, rotate until they do
-    if (shooterIsAligned == false) {
-        shooterMode = ShooterMode::ROTATING;
-        rotateBarrel0.set(ThunderCANMotorController::ControlMode::PERCENT_OUTPUT, .05);
+        rotateBarrel0.set(ThunderCANMotorController::ControlMode::PERCENT_OUTPUT, 0);
     }
 }
 
