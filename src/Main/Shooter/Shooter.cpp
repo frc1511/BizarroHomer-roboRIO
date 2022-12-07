@@ -58,6 +58,10 @@ void Shooter::homeShooter(void){
     
 }
 
+void testSolenoid(){
+    
+}
+
 void Shooter::process(){
     switch (shooterMode) {
         case ShooterMode::LOCALIZATION:

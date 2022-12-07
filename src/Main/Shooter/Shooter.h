@@ -18,6 +18,7 @@ public:
     void Preshoot();
     void Shoot();
     void homeShooter();
+    void testSolenoid();
 
 private:
     units::degree_t desiredShooterPivotAngle;
