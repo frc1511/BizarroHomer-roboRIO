@@ -76,7 +76,7 @@ void Controls::doDrive() {
 
     //SHOOTING
     if (driveController.getAxis(DriveAxis::LEFT_TRIGGER)){
-        shooter->Shoot();
+        shooter->testSolenoid();
     }
     if (driveController.getButton(DriveButton::LEFT_BUMPER)){
         shooter->Preshoot();
