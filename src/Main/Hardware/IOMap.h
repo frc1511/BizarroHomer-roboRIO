@@ -29,8 +29,9 @@
 #define CAN_SHOOTER_PIVOT_MOTOR1 7
 
 //PCM1
-#define FILL_VOLUME_TANK 0
-#define OPEN_SHOOTER 1
+#define PCM1 0
+#define FILL_VOLUME_TANK 1
+#define OPEN_SHOOTER 2
 
 // PWM
 
