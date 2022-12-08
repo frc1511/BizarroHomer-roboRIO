@@ -60,7 +60,6 @@ void Shooter::homeShooter(void){
 
 void Shooter::testSolenoid(){
     fillVolume.Toggle();
-    shooterValve.Toggle();
 }
 
 void Shooter::process(){
