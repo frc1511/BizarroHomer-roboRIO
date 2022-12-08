@@ -5,7 +5,7 @@
 #define AXIS_DEADZONE 0.1
 
 Controls::Controls(Drive* drive, Shooter* shooter)
-: drive(drive) { }
+: drive(drive), shooter(shooter) { }
 
 Controls::~Controls() = default;
 
