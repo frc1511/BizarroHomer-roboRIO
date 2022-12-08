@@ -49,7 +49,7 @@ private:
     HardwareManager::ShooterPivotMotor pivotBarrel0 { CAN_SHOOTER_PIVOT_MOTOR0 };
     HardwareManager::ShooterPivotMotor pivotBarrel1 { CAN_SHOOTER_PIVOT_MOTOR1 };
     frc::DigitalInput shooterBanner { DIO_SHOOTER_BANNER_ZEROING };
-    frc::Solenoid fillVolume {PCM1, frc::PneumaticsModuleType::CTREPCM, FILL_VOLUME_TANK};
-    frc::Solenoid shooterValve {PCM1, frc::PneumaticsModuleType::CTREPCM, OPEN_SHOOTER};
+    frc::Solenoid fillVolume {frc::PneumaticsModuleType::CTREPCM, FILL_VOLUME_TANK};
+    frc::Solenoid shooterValve {frc::PneumaticsModuleType::CTREPCM, OPEN_SHOOTER};
 
 };
