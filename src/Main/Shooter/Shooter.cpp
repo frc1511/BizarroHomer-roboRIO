@@ -59,7 +59,7 @@ void Shooter::homeShooter(void){
 }
 
 void Shooter::testSolenoid(){
-    fillVolume.Toggle(); 
+    fillVolume.Toggle();
 }
 
 void Shooter::process(){

@@ -75,7 +75,7 @@ void Controls::doDrive() {
     }
 
     //SHOOTING
-    if (driveController.getButton(DriveButton::RIGHT_BUMPER)){
+    if (driveController.getButtonPressed(DriveButton::RIGHT_BUMPER)){
         shooter->testSolenoid();
     }
     if (driveController.getButton(DriveButton::LEFT_BUMPER)){
